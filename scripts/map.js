@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
     text = JSON.stringify(data, null, 2);
     const myObj = JSON.parse(text);
     x = myObj["city"];
-    document.getElementById("test").innerHTML = "<h1>" + x + " is the closest proximation of where you live" + "</h1>";
+    document.getElementById("test").innerHTML = "<h1>" + x + " is the closest approximation of your location" + "</h1>";
   });
 
   mapboxgl.accessToken = 'pk.eyJ1IjoiZGVycGNoZWVzZTY5IiwiYSI6ImNrc2F4ZWlzdTAxYmYycHAzejVpeXFyNTEifQ.-_xZXfN2jAGYcOKfxTOOGA';
@@ -86,6 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
     url: "/data/fires_short.csv",
     success: function (data) {
       arrays = csvToArray(data);
+      arrays = filterData(1985, 1985, arrays);
       features = arrayToFeatures(arrays);
       drawMarkers(features);
     }

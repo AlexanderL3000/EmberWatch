@@ -1,11 +1,14 @@
 const slideVal = document.getElementById("firstVal");
 const slideVal2 = document.getElementById("secondVal");
 const inputSlider = document.querySelector("input");
-const nextSlider = document.getElementById("range2")
+const nextSlider = document.getElementById("range2");
+text = document.getElementById("slider-text");
+
 map = document.getElementById("map");
 currentMarkers = [];
 inputSlider.value = 1985;
 nextSlider.value = 1985;
+
 
 inputSlider.oninput = (() => {
     let value = inputSlider.value;
@@ -13,10 +16,10 @@ inputSlider.oninput = (() => {
     let max = inputSlider.value > nextSlider.value ? inputSlider.value : nextSlider.value;
     let min = inputSlider.value < nextSlider.value ? inputSlider.value : nextSlider.value;
 
+    slideVal.textContent = value;
+    text.innerHTML = "<h1> Range: " + min +"-"+ max + "</h1>"
 
-    slideVal.textContent = inputSlider.value;
-
-    slideVal.style.left = (value - 1948) * 1.325 + "%";
+    slideVal.style.left = (value - 1950) /70 * 100+ "%";
     if (map == null) {
         map = new mapboxgl.Map({
             container: 'map', // container ID
@@ -77,7 +80,9 @@ nextSlider.oninput = (() => {
 
     slideVal2.textContent = value;
 
-    slideVal2.style.left = (value - 1948) * 1.325 + "%";
+    text.innerHTML = "<h1> Range: " + min +"-"+ max + "</h1>"
+
+    slideVal2.style.left = (value - 1950) /70 * 100 + "%";
     if (map == null) {
         map = new mapboxgl.Map({
             container: 'map', // container ID

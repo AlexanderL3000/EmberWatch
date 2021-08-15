@@ -13,48 +13,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <style>
-        /*Begins Image Comparison Slider)(About Us page)*/
-        * {
-            box-sizing: border-box;
-        }
 
-        .img-comp-container {
-            position: relative;
-            height: 200px;
-            justify-content: center;
-            /* text-align: center; */
-            /*should be the same height as the images*/
-        }
-
-        .img-comp-img {
-            position: absolute;
-            width: auto;
-            height: auto;
-            overflow: hidden;
-        }
-
-        .img-comp-img img {
-            display: block;
-        }
-
-        .img-comp-slider {
-            position: absolute;
-            z-index: 9;
-            cursor: ew-resize;
-            /*set the appearance of the slider:*/
-            width: 40px;
-            height: 40px;
-            background-color: #2196F3;
-            opacity: 0.7;
-            border-radius: 50%;
-        }
-
-        /*Ends Image Comparison Slider*/
-    </style>
 </head>
 
-<body style="background-color:#dcc4b4;">
+<body style="background-color:#fae7d6">
     <ul class="navbar">
         <li style="float: right">
             <a href="/index.html">EmberWatch</a>
@@ -65,32 +27,44 @@
     <div class="jumbotron text-center bottom-fixed">
         <h1>SET.Hacks() Submission</h1>
         <p>by Alex Li, Lasya Erukulla, Lefan Hu and Vishrutha Gopa</p>
+        <i>
+            <p style = "color:green;font-family:verdana;">In recent years, the climate on our beloved Earth has started to change for the worse. 
+                Climate change has been shown to affect wildfires, due to the increased amount of droughts, and higher overall temperatures. 
+                Studies have shown that in the more recent years, fires have been getting larger, more severe, more frequent, and more dangerous.
+            </p>
+            <p style = "color:green;font-family:verdana;">This dilemma that the world has to face is what inspired us to create EmberWatch, an extremely helpful fire visualization tool capable of displaying wildfires that have happened all around Canada throughout the past century. 
+                Canada is one of the world's leading producers and exporters of wood, with the industry accounting for about $23.7 billion of the country's GDP in 2019. 
+                Due to the natural risk that comes with such an important industry, we felt that our project would be able to make an impact on local enterprises, and populations who live in high risk areas.
+            </p>
+        </i>
     </div>
 
     <script src="/scripts/scripts.js"> </script>
 
     <!----Image Comaprison SLider -->
-    <div class="img-comp-container">
-        <div class="img-comp-img">
-            <img src="/imgs/beforeforest.JPG" width="600" height="800">
+   
+        <div class="img-comp-container">
+    
+            <div class="img-comp-img">
+            <img src="imgs/afterafter.jpg" width="1200" height="800"/>
+            <p>
+            <center>
+                The picture on the left depicts a lavish green forest, while the picture on the right depicts the aftermath of a forest fire.
+            </center>
+            </p>
+            
+            <p>
+                <center>
+                <b>    EmberWatch </b>gives people all over Canada the tools they need to better protect their forests.
+                </center>
+            </p>
+            </div>
+            
+            <div class="img-comp-img img-comp-overlay">
+            <img src="imgs/beforebefore.jpg" width="1200" height="800"/>
+            </div>
+        
         </div>
-        <div class="img-comp-img img-comp-overlay">
-            <img src="/imgs/afterforest.JPG" width="600" height="800">
-        </div>
-    </div>
-
-    <!----Scrolling background -->
-    <div class="bg-image img1"></div>
-    <div class="bg-image img2"></div>
-    <div class="bg-image img3"></div>
-    <div class="bg-image img4"></div>
-    <div class="bg-image img5"></div>
-    <div class="bg-image img6"></div>
-
-    <div class="bg-text">
-        <h1 style="font: size 60;">EmberWatch</h1>
-    </div>
-
 
 
     <script>
