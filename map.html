@@ -15,24 +15,52 @@
 
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js"></script>
+
 </head>
 
-<body>
+<body style="background: lightgray; height: 100vh;">
     <ul class="navbar">
         <li style="float: right">
             <a href="/index.html">Ember Watch</a>
         </li>
         <li><a class="active" href="/map.html">Map</a></li>
-        <li><a href="/aboutMe.html">About Me</a></li>
-
+        <li><a href="/aboutUs.html">About Us</a></li>
     </ul>
 
-    <div id="test"></div>
 
-    <div id="container">
+
+    <div id=test class="jumbotron text-center" style="margin:0">
+        <p></p>
+    </div>
+    <div class="slider-wrapper">
+        <div class="range">
+            <div class="sliderVal">
+                <span id="firstVal">1985</span>
+            </div>
+            <div class="field">
+                <div class="val left">1950</div>
+                <input type="range" min="1950" max="2020" steps="1">
+                <div class="val right">2020</div>
+            </div>
+        </div>
+    </div>
+    <div class="slider-wrapper">
+        <div class="range">
+            <div class="sliderVal">
+                <span id="secondVal">1985</span>
+            </div>
+            <div class="field">
+                <div class="val left">1950</div>
+                <input type="range" id="range2" min="1950" max="2020" steps="1">
+                <div class="val right">2020</div>
+            </div>
+        </div>
+    </div>
+    <div class="map-wrapper">
         <div id="map"></div>
     </div>
     <script src="/scripts/map.js"></script>
+    <script src="/scripts/slider.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </body>
 

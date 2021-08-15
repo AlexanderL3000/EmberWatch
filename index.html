@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Display a map on a webpage</title>
+  <title>Ember Watch - Home</title>
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
   <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.css" rel="stylesheet">
   <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js"></script>
@@ -12,47 +12,61 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <style>
+  </style>
 </head>
 
-<body>
+<body style="background-color: rgba(250,231,214,255)">
   <ul class="navbar">
     <li style="float: right">
       <a class="active" href="/index.html">EmberWatch</a>
     </li>
     <li><a href="/map.html">Map</a></li>
     <li><a href="/aboutUs.html">About Us</a></li>
-
   </ul>
 
-  <div class="jumbotron text-center">
-    <img src="/imgs/ember Watch logo.jpg" class="img-logo" alt="logo">
-    <div class="text">
-      <h1 style="font-family:verdana;font-size:75px;">EmberWatch</h1>
-      <p style="padding-top: 10px;font-size:30px;color:green;">Don't let your future go up in smoke!!</p>
+  <div class="parent">
+    <div class="jumbotron">
+      <div class="left">
+        <div class="logo-wrapper">
+          <img src="/imgs/logo.JPG" class="img-logo" id="logo" alt="logo" width="250px" height="250px">
+        </div>
+      </div>
+      <div class="text">
+        <i>
+          <h1 style="font-family:verdana;font-size:75px;color:black;">EmberWatch</h1>
+        </i>
+        <p style="padding-top: 10px;font-size:30px;color:green;font-family:verdana;">Don't let your future go up in
+          smoke!!</p>
+      </div>
     </div>
   </div>
 
 
 
   <div id="demo" class="carousel slide" data-ride="carousel">
-
     <!-- Indicators -->
     <ul class="carousel-indicators">
       <li data-target="#demo" data-slide-to="0" class="active"></li>
       <li data-target="#demo" data-slide-to="1"></li>
       <li data-target="#demo" data-slide-to="2"></li>
+      <li data-target="#demo" data-slide-to="3"></li>
     </ul>
 
     <!-- The slideshow -->
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="/imgs/fireforest2.jpg" alt="Fire">
+    <div class="carousel-inner" role="listbox">
+      <div class="carousel-item active" style="background-color: rgb(251,230,211);">
+        <img class="d-block w-50 mx-auto" src="/imgs/forest2.jpg" alt="Forest1">
       </div>
-      <div class="carousel-item">
-        <img src="/imgs/fireforest2.jpg" alt="Forest Fire">
+      <div class="carousel-item " style="background-color: rgb(251,230,211);">
+        <img class="d-block w-50 mx-auto" src="/imgs/forest6.jpg" alt="Forest2">
       </div>
-      <div class="carousel-item">
-        <img src="/imgs/forestfire3.jpg" alt="WildFire">
+      <div class="carousel-item " style="background-color: rgb(251,230,211);">
+        <img class="d-block w-50 mx-auto" src="/imgs/forest3.jpg" alt="Forest3">
+      </div>
+      <div class="carousel-item " style="background-color: rgb(251,230,211);">
+        <img class="d-block w-50 mx-auto" src="/imgs/forest4.jpg" alt="Forest4">
       </div>
     </div>
 
@@ -64,13 +78,17 @@
       <span class="carousel-control-next-icon"></span>
     </a>
 
-  </div>
+    <div>
+      <!-- Left and right controls -->
+      <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
 
-  <div id="container">
-    <div id="map"></div>
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </body>
 
 </html>

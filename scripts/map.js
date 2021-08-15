@@ -1,7 +1,8 @@
+var map;
+
 $(document).ready(function () {
 
 })
-
 
 function csvToArray(str, delimiter = ",") {
 
@@ -32,17 +33,10 @@ function csvToArray(str, delimiter = ",") {
   return arr;
 }
 
-let allData;
-$.ajax({
-  type: "GET",
-  url: "/data/fires_short.csv",
-  success: function (data) {
-    allData = csvToArray(data);
-    // console.log(features)
-  }
-});
+
 
 function arrayToFeatures(data) {
+  var features = [];
   for (let i = 0; i < data.length; i++) {
     var lat = data[i][4]
     var lon = data[i][5]
@@ -53,8 +47,8 @@ function arrayToFeatures(data) {
         coordinates: [lon, lat]
       },
       properties: {
-        title: "Mapbox",
-        description: "San Francisco, California"
+        title: data[i][1] + " " + "Year " + data[i][6] + " Month" + data[i][7],
+        description: ""
       }
 
 
@@ -62,94 +56,59 @@ function arrayToFeatures(data) {
     features.push(feature);
     // console.log(feature)
   }
+
+  return features;
 }
-
-var features = arrayToFeatures(allData);
-
 
 document.addEventListener("DOMContentLoaded", function () {
   var text = ""
   var x = ""
-  // document.getElementById("test").addEventListener('click', onclick, false)
+
 
   let apiKey = '1be9a6884abd4c3ea143b59ca317c6b2';
   $.getJSON('https://ipgeolocation.abstractapi.com/v1/?api_key=' + apiKey, function (data) {
     text = JSON.stringify(data, null, 2);
     const myObj = JSON.parse(text);
     x = myObj["city"];
-    document.getElementById("test").innerHTML = "You live in " + x;
+    document.getElementById("test").innerHTML = "<h1>" + x + " is the closest proximation of where you live" + "</h1>";
   });
-
 
   mapboxgl.accessToken = 'pk.eyJ1IjoiZGVycGNoZWVzZTY5IiwiYSI6ImNrc2F4ZWlzdTAxYmYycHAzejVpeXFyNTEifQ.-_xZXfN2jAGYcOKfxTOOGA';
-  const map = new mapboxgl.Map({
+  map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/streets-v11',
-    center: [-74.5, 40],
-    zoom: 9
-
+    center: [-75.6, 45.4],
+    zoom: 5
   })
 
-  console
-
-  geojson = {
-    type: 'FeatureCollection',
-    features: arrayToFeatures(allData)
-  };
-
-  // var geojson = {
-  //   type: 'FeatureCollection',
-  //   features: [{
-  //     type: 'Feature',
-  //     geometry: {
-  //       type: 'Point',
-  //       coordinates: [-77.032, 38.913]
-  //     },
-  //     properties: {
-  //       title: 'Mapbox',
-  //       description: 'Washington, D.C.'
-  //     }
-  //   },
-  //   {
-  //     type: 'Feature',
-  //     geometry: {
-  //       type: 'Point',
-  //       coordinates: [-122.414, 37.776]
-  //     },
-  //     properties: {
-  //       title: 'Mapbox',
-  //       description: 'San Francisco, California'
-  //     }
-  //   },
-  //   {
-  //     type: 'Feature',
-  //     geometry: {
-  //       type: 'Point',
-  //       coordinates: [45.4215, 75.6972]
-  //     },
-  //     properties: {
-  //       title: 'Mapbox',
-  //       description: 'San Francisco, California'
-  //     }
-  //   }]
-  // };
-
-  console.log(features)
-  geojson.features.forEach(function (marker) {
-
-    // create a HTML element for each feature
-    var el = document.createElement('div');
-    el.className = 'marker';
-
-    // make a marker for each feature and add to the map
-    new mapboxgl.Marker(el)
-      .setLngLat(marker.geometry.coordinates)
-      .setPopup(new mapboxgl.Popup({ offset: 30 }) // add popups
-        .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
-      .addTo(map);
-
-    console.log(marker.geometry.coordinates)
+  $.ajax({
+    type: "GET",
+    url: "/data/fires_short.csv",
+    success: function (data) {
+      arrays = csvToArray(data);
+      features = arrayToFeatures(arrays);
+      drawMarkers(features);
+    }
   });
 
+  function drawMarkers(features) {
+    features.forEach(function (marker) {
+
+      // create a HTML element for each feature
+      var el = document.createElement('div');
+      el.className = 'marker';
+
+      // make a marker for each feature and add to the map
+      try {
+        currentMarkers.push(new mapboxgl.Marker(el)
+          .setLngLat(marker.geometry.coordinates)
+          .setPopup(new mapboxgl.Popup({ offset: 30 }) // add popups
+            .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+          .addTo(map)
+        );
+      } catch (e) { }
+      // console.log(marker.geometry.coordinates)
+    });
+  }
 
 }, false)

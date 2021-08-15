@@ -5,20 +5,98 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ember Watch - AboutUS</title>
+    <title>EmberWatch- AboutUS</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style>
+        /*Begins Image Comparison Slider)(About Us page)*/
+        * {
+            box-sizing: border-box;
+        }
+
+        .img-comp-container {
+            position: relative;
+            height: 200px;
+            justify-content: center;
+            /* text-align: center; */
+            /*should be the same height as the images*/
+        }
+
+        .img-comp-img {
+            position: absolute;
+            width: auto;
+            height: auto;
+            overflow: hidden;
+        }
+
+        .img-comp-img img {
+            display: block;
+        }
+
+        .img-comp-slider {
+            position: absolute;
+            z-index: 9;
+            cursor: ew-resize;
+            /*set the appearance of the slider:*/
+            width: 40px;
+            height: 40px;
+            background-color: #2196F3;
+            opacity: 0.7;
+            border-radius: 50%;
+        }
+
+        /*Ends Image Comparison Slider*/
+    </style>
 </head>
 
-<body style="background-color:rgb(214, 235, 238);">
-    <div id="About Us">
-        <p>SET.Hacks() by Alex, Lasya, Lefan and Vishrutha </p>
-
+<body style="background-color:#dcc4b4;">
+    <ul class="navbar">
+        <li style="float: right">
+            <a href="/index.html">EmberWatch</a>
+        </li>
+        <li><a href="/map.html">Map</a></li>
+        <li><a class="active" href="/aboutUs.html">About Us</a></li>
+    </ul>
+    <div class="jumbotron text-center bottom-fixed">
+        <h1>SET.Hacks() Submission</h1>
+        <p>by Alex Li, Lasya Erukulla, Lefan Hu and Vishrutha Gopa</p>
     </div>
-    <script></script>
+
+    <script src="/scripts/scripts.js"> </script>
+
+    <!----Image Comaprison SLider -->
+    <div class="img-comp-container">
+        <div class="img-comp-img">
+            <img src="/imgs/beforeforest.JPG" width="600" height="800">
+        </div>
+        <div class="img-comp-img img-comp-overlay">
+            <img src="/imgs/afterforest.JPG" width="600" height="800">
+        </div>
+    </div>
+
+    <!----Scrolling background -->
+    <div class="bg-image img1"></div>
+    <div class="bg-image img2"></div>
+    <div class="bg-image img3"></div>
+    <div class="bg-image img4"></div>
+    <div class="bg-image img5"></div>
+    <div class="bg-image img6"></div>
+
+    <div class="bg-text">
+        <h1 style="font: size 60;">EmberWatch</h1>
+    </div>
+
+
+
+    <script>
+        initComparisons();
+    </script>
+
 </body>
 
 </html>
